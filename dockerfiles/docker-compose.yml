@@ -1,35 +1,35 @@
 version: '2'
 services:
-#  che:
-#    image: eclipse/che-server:5.0.0
-#    container_name: che
-#    ports:
-#      - 8080:8080
-#    restart: always
-#    volumes:
-#      - /srv/eclipse-che:/root/project
-#  gitlab:
-#    image: gitlab/gitlab-ce 
-#    container_name: gitlab
-#    ports:
-#      - 8001:8001
-#      - 443:443
-#      - 22:22
-#    restart: always
-#    volumes:
-#      - /srv/gitlab/config:/etc/project
-#      - /srv/gitlab/logs:/var/log/project
-#      - /srv/gitlab/data:/var/opt/project
-#  jenkins:
-#    image: 'jenkins/jenkins:alpine'
-#    container_name: jenkins
-#    privileged: true
-#    ports:
-#      - 8002:8002
-#      - 50000:50000
-#    restart: always
-#    volumes:
-#      - /srv/jenkins:/etc/jenkins_home
+  che:
+    image: eclipse/che-server:5.0.0
+    container_name: che
+    ports:
+      - 8080:8080
+    restart: always
+    volumes:
+      - /srv/eclipse-che:/root/project
+  gitlab:
+    image: gitlab/gitlab-ce 
+    container_name: gitlab
+    ports:
+      - 8001:8001
+      - 443:443
+      - 22:22
+    restart: always
+    volumes:
+      - /srv/gitlab/config:/etc/project
+      - /srv/gitlab/logs:/var/log/project
+      - /srv/gitlab/data:/var/opt/project
+  jenkins:
+    image: 'jenkins/jenkins:alpine'
+    container_name: jenkins
+    privileged: true
+    ports:
+      - 8002:8002
+      - 50000:50000
+    restart: always
+    volumes:
+      - /srv/jenkins:/etc/jenkins_home
   sonarqube:
     image: sonarqube
     ports:
@@ -38,17 +38,3 @@ services:
       - ./srv/sonarqube/conf:/opt/sonarqube/conf
       - ./srv/sonarqube/data:/opt/sonarqube/data
       - ./srv/sonarqube/bundled_plugins:/opt/sonarqube/lib/bundled-plugins
-#  nexus:
-#    image: sonatype/nexus3
-#    volumes:
-#      - "./storage/nexus-data:/sonatype-work"
-#    ports:
-#      - "8081:8081"
-#  registry:
-#    image: registry
-#    portslo:
-#      - "5000:5000"
-#  nextcloud:
-#    image: nextcloud
-#    ports:
-#      - "8999:80"
