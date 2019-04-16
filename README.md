@@ -1,7 +1,7 @@
 # CI-CD-TP
 Code forge with Docker
 
-Link for different services after run them with docker-compose up -d.
+Link for various services after running them with docker-compose up -d.
 
 - Eclipse che : localhost:8080
 - Gitlab : localhost:8001
