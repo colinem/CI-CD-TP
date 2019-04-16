@@ -1,0 +1,62 @@
+version: '2'
+services:
+  che:
+    image: eclipse/che-server:5.0.0
+    container_name: che
+    ports:
+      - 8080:8080
+    restart: always
+    volumes:
+      - /srv/eclipse-che:/root/project
+  gitlab:
+    image: gitlab/gitlab-ce 
+    container_name: gitlab
+    ports:
+      - 8001:80
+      - 443:443
+      - 22:22
+    restart: always
+    volumes:
+      - /srv/gitlab/config:/etc/project
+      - /srv/gitlab/logs:/var/log/project
+      - /srv/gitlab/data:/var/opt/project
+  jenkins:
+    image: 'jenkins/jenkins:alpine'
+    container_name: jenkins
+    privileged: true
+    ports:
+      - 8002:8080
+      - 50000:50000
+    restart: always
+    volumes:
+      - /srv/jenkins:/etc/jenkins_home
+  sonarqube:
+    image: sonarqube:latest
+    container_name: sonar
+    ports:
+      - "9000:9000"
+    restart: always
+    volumes:
+      - /srv/sonarqube/conf:/var/project/conf
+      - /srv/sonarqube/data:/var/project/data
+      - /srv/sonarqube/bundled_plugins:/var/project/lib/bundled-plugins
+  nexus:
+    image: sonatype/nexus3
+    container_name: nexus
+    ports:
+      - "8081:8081"
+    restart: always
+    volumes:
+      - "/srv/nexus/nexus-data:/var/project/data"
+  registry:
+    image: registry
+    container_name: registry
+    restart: always
+    ports:
+      - "5000:5000"
+  nextcloud:
+    image: nextcloud
+    container_name: nextcloud
+    restart: always
+    ports:
+      - "8003:80"
